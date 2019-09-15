@@ -45,7 +45,7 @@ struct Heap{
         while(cur <= len){
             tar = (cur << 1);
             if(tar > len) break;
-            if(tar + 1 <= len && h[tar] < h[tar + 1]) tar ++;
+            if(tar + 1 <= len && h[tar + 1] < h[tar]) tar ++;
             if(h[tar] < h[cur]) swap(h[tar], h[cur]);
             else break;
             cur = tar;
