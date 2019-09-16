@@ -1,11 +1,11 @@
 #include <bits/stdc++.h>
 using namespace std;
-const int N = 233;
-const int M = 1000;
+const int N = 1000;
+const int M = 100000000;
 char s1[1024], s2[1024];
 
 int getR(int x){
-    return double(rand()) / RAND_MAX * M;
+    return double(rand()) / RAND_MAX * x;
 }
 
 void genRandomAlphaStr(int len){
@@ -31,15 +31,28 @@ void gen(){
     return;
 }
 
+vector<char*> vs;
+
+void pushStr(char * s){
+    char * ns = new char [strlen(s) + 1];
+    strcpy(ns, s);
+    vs.push_back(ns);
+    return;
+}
+
 int main(){
     srand(time(NULL));
     FILE * fp;
-    fp = fopen("testcase.in", "w");
-    for(int tim, i = 0; i < N; i ++){
+    fp = fopen("testcase2.in", "w");
+    for(int i = 1; i <= N; i ++){
         gen();
-        tim = getR(M);
-        for(int j = 0; j < tim; j ++)
-            fprintf(fp, "%s ", s2);
+        pushStr(s2);
     }
+    // for(auto p: vs)
+    //     printf("%s\n", p);
+
+    for(int i = 0; i < M; i ++)
+        fprintf(fp, "%s ", vs[getR(N - 1)]);
+    fclose(fp);
     return 0;
 }
